@@ -10,9 +10,9 @@ get '/surveys/:id' do
 end
 
 delete '/surveys/:id' do
-  @survey = Survey.find_by(id: params[:survey])
+  @survey = Survey.find_by(id: params[:id])
   @survey.destroy
-  erb :'surveys/index'
+  redirect "users/#{session[:user_id]}"
 end
 
 get '/surveys/new' do
@@ -24,14 +24,14 @@ end
 
 # => {"survey"=>{"user_id"=>"2", "title"=>"ksdfj"}, "question"=>{"text"=>"lskdjf"}, "choices"=>["lll", "hhh"]}
 
-post '/surveys' do
-  @survey = Survey.new(params[:survey])
-  @question = Question.new(params[:question])
+# post '/surveys' do
+#   @survey = Survey.new(params[:survey])
+#   @question = Question.new(params[:question])
 
-    params[:choices].each do |choice_text|
-      Choice.new(text: choice_text, question_id:)
-    end
+#     params[:choices].each do |choice_text|
+#       Choice.new(text: choice_text, question_id:)
+#     end
 
-  redirect "/users/#{@user.id}"
-end
+#   redirect "/users/#{@user.id}"
+# end
 

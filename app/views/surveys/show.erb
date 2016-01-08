@@ -13,7 +13,7 @@
   <% end %>
 </div>
 
-<% if @survey.user_id == session[:id] %>
+<% if @survey.user_id == session[:user_id] %>
   <form method="POST" action="/surveys/<%= @survey.id %>">
     <input type="hidden" name="_method" value="DELETE" />
     <input type="submit" value="Delete Survey">

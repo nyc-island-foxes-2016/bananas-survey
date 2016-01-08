@@ -3,8 +3,16 @@
     <ul>
       <% @user.surveys.each do |survey| %>
       <li><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
+          <% if survey.user_id == session[:user_id] %>
+            <form method="POST" action="/surveys/<%= survey.id %>">
+              <input type="hidden" name="_method" value="DELETE" />
+              <input type="submit" value="Delete Survey">
+            </form>
+          <% end %>
       <% end %>
     <%else%>
       <p>You have no surveys yet. Create one!</p>
     </ul>
   <%end%>
+
+
