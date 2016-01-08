@@ -4,7 +4,6 @@ get '/surveys' do
 end
 
 get '/surveys/:id' do
-  binding.pry
   @survey = Survey.find_by(id: params[:id])
   erb :'surveys/show'
 end

@@ -1,4 +1,21 @@
 <div id="container">
   <h3><%= @survey.title %></h3>
-    <li><%= @survey.questions.each do |question| %></a></li>
+  <% @survey.questions.each do |q| %>
+    <ol>
+      <li><%= q.text %>
+        <ol type="A">
+          <% q.choices.each do |c| %>
+          <li><%= c.text %></li>
+          <% end %>
+        </ol>
+      </li>
+    </ol>
+  <% end %>
 </div>
+
+<% if @survey.user_id == session[:id] %>
+  <form method="POST" action="/surveys/<%= @survey.id %>">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="Delete Survey">
+  </form>
+<% end %>
