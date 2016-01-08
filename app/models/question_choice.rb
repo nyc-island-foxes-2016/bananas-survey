@@ -1,4 +1,4 @@
 class QuestionChoice < ActiveRecord::Base
-  has_many :questions
-  has_many :choices
+  belongs_to :question
+  belongs_to :choice
 end
