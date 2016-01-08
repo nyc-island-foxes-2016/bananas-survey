@@ -7,7 +7,7 @@ post '/login' do
   @user = User.find_by(name: params[:user][:name])
   if @user && @user.password == params[:user][:password]
     session[:user_id] = @user.id
-    redirect "/user/#{@user.id}"
+    redirect "/users/#{@user.id}"
   else
     @user = User.new(params[:user])
     @login_errors = ["Either the name or password is incorrect"]
