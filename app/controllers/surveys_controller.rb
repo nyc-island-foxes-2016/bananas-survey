@@ -17,7 +17,13 @@ post '/surveys' do
       QuestionChoice.create(question: @question, choice: choice )
   end
 
-  redirect "/users/#{params[:survey][:user_id]}"
+  if @survey.save
+    redirect "/users/#{params[:survey][:user_id]}"
+  else
+    @errors = @survey.errors.full_messages
+    erb :'/surveys/new'
+  end
+
 end
 
 
