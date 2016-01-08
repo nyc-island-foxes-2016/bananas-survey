@@ -9,3 +9,4 @@ QuestionChoice.create(question: question,choice: choice_1)
 QuestionChoice.create(question: question,choice: choice_2)
 
 end
+
