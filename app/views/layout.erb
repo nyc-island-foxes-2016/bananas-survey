@@ -25,12 +25,13 @@
       <h1 id="logo">Bananas?</h1>
       <ul>
         <% if logged_in? %>
-        <li><a href="#"><%= current_user.name %></a></li>
-        <li><a href="/surveys/new">create survey</a></li>
+          <li><a href="/users/<%=current_user.id%>"><%= current_user.name %></a></li>
+          <li><a href="/logout">logout</a></li>
+          <li><a href="/surveys/new">create survey</a></li>
         <% else %>
-        <li><a href="/login">login or register</a></li>
+          <li><a href="/login">login or register</a></li>
         <% end %>
-        <li><a href="/surveys/index">all surveys</a></li>
+          <li><a href="/surveys">all surveys</a></li>
       </ul>
     </nav>
   </header>

@@ -1,0 +1,10 @@
+<h3><%= @user.name %> profile page</h3>
+  <% if @user.surveys %>
+    <ul>
+      <% @user.surveys.each do |survey| %>
+      <li><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
+      <% end %>
+    <%else%>
+      <p>You have no surveys yet. Create one!</p>
+    </ul>
+  <%end%>
