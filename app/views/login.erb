@@ -1,0 +1,36 @@
+<h2>Welcome to Bananas, Please Sign in!</h2>
+<div id="login-container">
+  <h3>Login</h3>
+  <form action= "/login" method="post">
+    <label for="user-name">Username</label>
+    <input type="text" name="user[name]" id="user-name" value="<%= @user.name %>">
+    <label for="user-password">Password</label>
+    <input type="password" name="user[password]" id="user-password">
+    <input type="submit" value="Login">
+  </form>
+<% if @login_errors %>
+  <ul>
+    <% @login_errors.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+
+<div id="sign-up-container">
+  <h3>Sign Up!</h3>
+  <form action="/signup" method="post">
+    <label for="user-name">Username</label>
+    <input type="text" name="user[name]" id="user-name">
+    <label for="user-password">Password</label>
+    <input type="password" name="user[password]" id="user-password">
+    <input type="submit" value="Sign Up">
+  </form>
+<% if @sign_up_errors %>
+  <ul>
+    <% @sign_up_errors.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
