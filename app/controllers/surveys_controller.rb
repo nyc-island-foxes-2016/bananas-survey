@@ -5,18 +5,26 @@ get '/surveys/new' do
   erb :'surveys/new'
 end
 
-# => {"survey"=>{"user_id"=>"2", "title"=>"ksdfj"}, "question"=>{"text"=>"lskdjf"}, "choices"=>["lll", "hhh"]}
+# Example Params => {"survey"=>{"user_id"=>"2", "title"=>"ksdfj"}, "question"=>{"text"=>"lskdjf"}, "choices"=>["lll", "hhh"]}
 
 post '/surveys' do
   @survey = Survey.new(params[:survey])
   @question = Question.new(params[:question])
 
-    params[:choices].each do |choice_text|
-      Choice.new(text: choice_text, question_id:)
-    end
+  # Iterates through choices entered and creates new Choices and QuestionChoices
+  (params[:choices]).each do |choice_text|
+      choice = Choice.create(text: choice_text)
+      QuestionChoice.create(question: @question, choice: choice )
+  end
 
-  redirect "/users/#{@user.id}"
+  redirect "/users/#{params[:survey][:user_id]}"
 end
+
+
+
+
+
+
 
 
 
