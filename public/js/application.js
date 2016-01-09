@@ -22,4 +22,28 @@ $(document).ready(function() {
     });
   });
 
+    $('.container').on("submit", '#add-choice', function(event){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/choices",
+      data: $(this).serialize()
+    }).done(function(response){
+      $('#choices-container').remove();
+      $('.container').append(response);
+    });
+  });
+
+    // $('.container').on("click", '#add-another-choice', function(event){
+    //   event.preventDefault();
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "/choices",
+    //     data: $(this).serialize()
+    //   }).done(function(response){
+    //     $('.container').append(response);
+    //   });
+    // });
+
+
 });
