@@ -1,3 +1,9 @@
+
+get '/surveys' do
+  @surveys = Survey.all
+  erb :'surveys/index'
+end
+
 get '/surveys/new' do
   @survey = Survey.new
   @question = Question.new
@@ -5,7 +11,17 @@ get '/surveys/new' do
   erb :'surveys/new'
 end
 
-# Example Params => {"survey"=>{"user_id"=>"2", "title"=>"ksdfj"}, "question"=>{"text"=>"lskdjf"}, "choices"=>["lll", "hhh"]}
+get '/surveys/:id' do
+  @survey = Survey.find_by(id: params[:id])
+  erb :'surveys/show'
+end
+
+delete '/surveys/:id' do
+  @survey = Survey.find_by(id: params[:id])
+  @survey.destroy
+  redirect "users/#{session[:user_id]}"
+end
+
 
 post '/surveys' do
   @survey = Survey.new(params[:survey])
@@ -25,10 +41,6 @@ post '/surveys' do
   end
 
 end
-
-
-
-
 
 
 

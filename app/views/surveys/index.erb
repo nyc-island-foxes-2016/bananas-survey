@@ -1,0 +1,8 @@
+<div id="container">
+  <h3>Surveys</h3>
+  <ol>
+    <% @surveys.each do |survey| %>
+      <li><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
+    <% end %>
+  </ol>
+</div>
