@@ -1,7 +1,10 @@
-
 get '/surveys' do
   @surveys = Survey.all
   erb :'surveys/index'
+end
+
+post '/surveys/banana' do
+  binding.pry
 end
 
 get '/surveys/new' do
