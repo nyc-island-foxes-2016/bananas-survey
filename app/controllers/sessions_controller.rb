@@ -16,12 +16,12 @@ post '/login' do
 end
 
 post '/signup' do
-  @user = User.new(name: params[:user][:name])
+  @user = User.new(name: params[:user][:name], password: params[:user][:password])
   if @user.save
     session[:user_id] = @user.id
-    redirect "/user/#{@user.id}"
+    redirect "/users/#{@user.id}"
   else
-    @user = User.new(params{:user})
+    @user = User.new(params[:user])
     @sign_up_errors = @user.errors.full_messages
     erb :login
   end
