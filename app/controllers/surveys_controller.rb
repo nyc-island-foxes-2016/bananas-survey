@@ -38,10 +38,13 @@ post '/surveys' do
       end
       redirect "/users/#{params[:survey][:user_id]}"
     else
+      @survey.destroy
+      @question.destroy
       @question_errors = @question.errors.full_messages
       erb :'/surveys/new'
     end
   else
+    @survey.destroy
     @survey_errors = @survey.errors.full_messages
     erb :'/surveys/new'
   end
