@@ -9,6 +9,7 @@
       <li><%= q.text %><br>
         <ul>
           <% q.choices.each do |c| %>
+          <br>
           <input class="survey-buttons" type="radio" name="response[choice_id]" value="<%= c.id %>"> <%= c.text %><br>
           <% end %>
         </ul>
@@ -16,7 +17,7 @@
     </ol>
   <% end %>
 
-  <input class="buttonStyle" type="submit" value="Submit">
+  <input  class="banana-button" type="submit" value="Submit">
 
 </form>
 
@@ -25,7 +26,7 @@
 <% if @survey.user_id == session[:user_id] %>
   <form method="POST" action="/surveys/<%= @survey.id %>">
     <input type="hidden" name="_method" value="DELETE">
-    <input class="buttonStyle" type="submit" value="Delete Survey">
+    <input  class="banana-button" type="submit" value="Delete Survey">
   </form>
 <% end %>
 <!--
