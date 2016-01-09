@@ -1,21 +1,32 @@
 <div id="container">
-  <h3><%= @survey.title %></h3>
+
+<h3><%= @survey.title %></h3>
+
+<form method="POST" action="/surveys/banana">
+
   <% @survey.questions.each do |q| %>
     <ol>
-      <li><%= q.text %>
-        <ol type="A">
+      <li><%= q.text %><br>
+        <ul>
           <% q.choices.each do |c| %>
-          <li><%= c.text %></li>
+          <input class="survey-buttons" type="radio" name="response[choice_id]" value="<%= c.id %>"> <%= c.text %><br>
           <% end %>
-        </ol>
+        </ul>
       </li>
     </ol>
   <% end %>
+
+  <input class="buttonStyle" type="submit" value="Submit">
+
+</form>
+
 </div>
 
 <% if @survey.user_id == session[:user_id] %>
   <form method="POST" action="/surveys/<%= @survey.id %>">
-    <input type="hidden" name="_method" value="DELETE" />
-    <input type="submit" value="Delete Survey">
+    <input type="hidden" name="_method" value="DELETE">
+    <input class="buttonStyle" type="submit" value="Delete Survey">
   </form>
 <% end %>
+<!--
+creating the form that uses the survey data anx -->
