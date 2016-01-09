@@ -6,7 +6,7 @@
     <input type="text" name="user[name]" id="user-name" value="<%= @user.name %>">
     <label for="user-password">Password</label>
     <input type="password" name="user[password]" id="user-password">
-    <input type="submit" value="Login">
+    <input class="banana-button" type="submit" value="Login">
   </form>
 <% if @login_errors %>
   <ul>
@@ -24,7 +24,7 @@
     <input type="text" name="user[name]" id="user-name">
     <label for="user-password">Password</label>
     <input type="password" name="user[password]" id="user-password">
-    <input type="submit" value="Sign Up">
+    <input class="banana-button" type="submit" value="Sign Up">
   </form>
 <% if @sign_up_errors %>
   <ul>

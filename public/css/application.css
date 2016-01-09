@@ -8,13 +8,15 @@ body {
   width: 900px;
   height: 70%;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  border: 5px solid black;
   clear: both;
 }
 
 .header {
   margin: 20px auto;
   width: 900px;
+  height: 50px;
+  margin-bottom: 50px;
 }
 
 th {
@@ -43,7 +45,6 @@ nav a:hover {
 
 #logo {
   display: inline;
-  float: left;
   font-family: 'Bangers', cursive;
   font-size: 3em;
 }
@@ -51,10 +52,11 @@ nav a:hover {
 #banana {
   width: 50px;
   height: 50px;
+  display: inline;
 }
 
 form {
-padding: 3%;
+  padding: 3%;
 }
 
 form input {
@@ -63,16 +65,42 @@ form input {
 }
 
 .buttonStyle {
-border: 1px solid yellow;
-/*background-color: gray;*/
-/*background: url('http://images.clipartpanda.com/banana-20clip-20art-niEeKGXiA.png');*/
+  border: 1px solid yellow;
+  /*background-color: gray;*/
+  /*background: url('http://images.clipartpanda.com/banana-20clip-20art-niEeKGXiA.png');*/
 }
 
-.survey-buttons{
-  display: inline-block;
+.banana-button{
+  background:    #ffff7f;
+  border:        3px solid black;
+  border-radius: 25px;
+  color:         black;
+  display:       inline-block;
+  padding:       8px 20px;
+  font:          normal 700 24px/1 "Bangers", sans-serif;
+  text-align:    center;
+  text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
 }
 
 .no-border {
   border:none;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.survey-buttons{
+  display: inline-block;
+}
+
+footer p{
+  text-align: center;
+  width: 100%;
+  color: black;
+  font-family: "Bangers";
+}

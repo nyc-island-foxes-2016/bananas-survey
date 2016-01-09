@@ -2,12 +2,13 @@
   <% if @user.surveys %>
     <ul>
       <% @user.surveys.each do |survey| %>
-      <li><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
+      <li class="inline"><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
           <% if survey.user_id == session[:user_id] %>
-            <form method="POST" action="/surveys/<%= survey.id %>">
+            <form class="inline-block" method="POST" action="/surveys/<%= survey.id %>">
               <input type="hidden" name="_method" value="DELETE" />
-              <input type="submit" value="Delete Survey">
+              <input class="banana-button" type="submit" value="Delete Survey">
             </form>
+            <br>
           <% end %>
       <% end %>
     <%else%>
