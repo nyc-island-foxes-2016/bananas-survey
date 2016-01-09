@@ -1,0 +1,19 @@
+<form action ="/choices" method="POST">
+
+  <input type="hidden" name="choice[question_id]" value="<%= @question.id %>">
+  <label for="choice">Choice:</label>
+  <input id="choice" name="choice[text]" />
+
+  <% if @choice_errors %>
+   <ul>
+     <% @choice_errors.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+   </ul>
+  <% end  %>
+
+  <input class="banana-button" type="submit" value="Add Choice to Survey">
+</form>
+
+
+

@@ -7,7 +7,7 @@ end
 post '/questions' do
   @question = Question.new(params[:question])
   if @question.save
-    redirect "/choices/new"
+    redirect "/choices/#{@question.id}/new"
   else
     @errors = @question.errors.full_messages
     redirect "/questions/new"
