@@ -1,7 +1,7 @@
 get '/questions/:survey_id/new' do
   @question = Question.new
   @survey = Survey.find_by(id: params[:survey_id])
-  erb :'questions/new'
+  erb :'questions/new', layout: false
 end
 
 post '/questions' do
