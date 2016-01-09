@@ -25,32 +25,27 @@ delete '/surveys/:id' do
   redirect "users/#{session[:user_id]}"
 end
 
-
-# => {"survey"=>{"user_id"=>"1", "title"=>"checking"}, "question"=>{"text"=>"question "}, "choices"=>["choice1", "choice2"]}
 post '/surveys' do
   @survey = Survey.new(params[:survey])
   @question = Question.new(params[:question])
 
-  if @survey.save && @question.save
-    # Iterates through choices entered and creates new Choices and QuestionChoices
+  if @survey.save
+    @question.survey = @survey
+    if @question.save
     (params[:choices]).each do |choice_text|
-        choice = Choice.new(text: choice_text)
-        if choice.save
-          QuestionChoice.create(question: @question, choice: choice )
-        else
-          @errors = choice.errors.full_messages
-          erb :'/surveys/new'
-        end
+      choice = Choice.create(text: choice_text)
+          QuestionChoice.create(question: @question, choice: choice)
+      end
+      redirect "/users/#{params[:survey][:user_id]}"
+    else
+      @question_errors = @question.errors.full_messages
+      erb :'/surveys/new'
     end
-    redirect "/users/#{params[:survey][:user_id]}"
   else
-    @errors = @survey.errors.full_messages + @question.errors.full_messages
+    @survey_errors = @survey.errors.full_messages
     erb :'/surveys/new'
   end
-
 end
-
-
 
 
 

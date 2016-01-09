@@ -8,17 +8,33 @@
   <input type="text" name="question[text]" id="survey-question" value="<%= @question.text %>">
 
   <label for="question-choice-1">Choice:</label>
-  <input id="question-choice-1" name="choices[]" value="<%= @choice.text %>"/>
+  <input id="question-choice-1" name="choices[]" />
 
   <label for="question-choice-2">Choice:</label>
-  <input id="question-choice-2" name="choices[]" value="<%= @choice.text %>"/>
+  <input id="question-choice-2" name="choices[]" />
 
   <input type="submit" value="Create survey">
 </form>
 
- <% if @errors %>
+ <% if @survey_errors %>
    <ul>
-     <% @errors.each do |message| %>
+     <% @survey_errors.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+   </ul>
+ <% end  %>
+
+ <% if @question_errors %>
+   <ul>
+     <% @question_errors.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+   </ul>
+ <% end  %>
+
+ <% if @choice_errors %>
+   <ul>
+     <% @choice_errors.each do |message| %>
        <li><%= message %></li>
      <% end %>
    </ul>
