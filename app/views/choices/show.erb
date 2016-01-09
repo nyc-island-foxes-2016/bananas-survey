@@ -1,4 +1,4 @@
-<div id="container">
+<div id="choices-container">
   <h3>Choices</h3>
   <ol>
     <% @choices.each do |choice| %>
@@ -6,8 +6,6 @@
     <% end %>
   </ol>
 
-<a href="/choices/<%= @question.id %>/new" class="banana-button no_decoration">Add Choice</a>
-
-<a href="/surveys/<%= @question.survey_id %>" class="banana-button no_decoration">View Survey</a>
+<a href="/surveys/<%= @question.survey_id %>" class="banana-button">View Survey</a>
 
 </div>

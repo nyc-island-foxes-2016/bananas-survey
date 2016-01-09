@@ -23,11 +23,16 @@ delete '/surveys/:id' do
 end
 
 post '/surveys' do
-  @survey = Survey.new(params[:survey])
-  if @survey.save
+  if request.xhr?
+    @survey = Survey.create(params[:survey])
     redirect "/questions/#{@survey.id}/new"
   else
-    @errors = @survey.errors.full_messages
-    redirect "/surveys/new"
+    @survey = Survey.new(params[:survey])
+    if @survey.save
+      redirect "/questions/#{@survey.id}/new"
+    else
+      @errors = @survey.errors.full_messages
+      redirect "/surveys/new"
+    end
   end
 end

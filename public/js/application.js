@@ -1,7 +1,49 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('#create-survey').on("submit", function(event){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/surveys",
+      data: $(this).serialize()
+    }).done(function(response){
+      $('.container').append(response);
+    });
+  });
+
+  $('.container').on("submit", '#create-question', function(event){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/questions",
+      data: $(this).serialize()
+    }).done(function(response){
+      $('.container').append(response);
+    });
+  });
+
+    $('.container').on("submit", '#add-choice', function(event){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/choices",
+      data: $(this).serialize()
+    }).done(function(response){
+      $('#choices-container').remove();
+      $('.container').append(response);
+    });
+  });
+
+    // $('.container').on("click", '#add-another-choice', function(event){
+    //   event.preventDefault();
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "/choices",
+    //     data: $(this).serialize()
+    //   }).done(function(response){
+    //     $('.container').append(response);
+    //   });
+    // });
+
+
 });
