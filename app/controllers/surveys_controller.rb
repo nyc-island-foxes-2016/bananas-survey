@@ -3,10 +3,6 @@ get '/surveys' do
   erb :'surveys/index'
 end
 
-post '/surveys/banana' do
-  binding.pry
-end
-
 get '/surveys/new' do
   @survey = Survey.new
   @question = Question.new
@@ -49,7 +45,3 @@ post '/surveys' do
     erb :'/surveys/new'
   end
 end
-
-
-
-

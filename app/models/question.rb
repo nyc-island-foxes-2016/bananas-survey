@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :survey
+  has_many :responses
   has_many :question_choices
   has_many :choices, through: :question_choices
 

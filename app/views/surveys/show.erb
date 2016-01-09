@@ -2,7 +2,7 @@
 
 <h3><%= @survey.title %></h3>
 
-<form method="POST" action="/surveys/banana">
+<form method="POST" action="/response">
 
   <% @survey.questions.each do |q| %>
     <ol>
@@ -16,7 +16,7 @@
       </li>
     </ol>
   <% end %>
-
+  <input type="hidden" name="response[survey_id]" value="<%= @survey.id %>">
   <input  class="banana-button" type="submit" value="Submit">
 
 </form>
