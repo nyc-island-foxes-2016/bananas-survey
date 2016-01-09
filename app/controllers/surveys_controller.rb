@@ -4,6 +4,13 @@ get '/surveys' do
   erb :'surveys/index'
 end
 
+get '/surveys/new' do
+  @survey = Survey.new
+  @question = Question.new
+  @choice = Choice.new
+  erb :'surveys/new'
+end
+
 get '/surveys/:id' do
   @survey = Survey.find_by(id: params[:id])
   erb :'surveys/show'
@@ -15,12 +22,6 @@ delete '/surveys/:id' do
   redirect "users/#{session[:user_id]}"
 end
 
-get '/surveys/new' do
-  @survey = Survey.new
-  @question = Question.new
-  @choice = Choice.new
-  erb :'surveys/new'
-end
 
 post '/surveys' do
   @survey = Survey.new(params[:survey])
