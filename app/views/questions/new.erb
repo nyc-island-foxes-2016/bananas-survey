@@ -1,4 +1,4 @@
-<form action='/questions' method= "post">
+<form action='/questions' method= "post" id="create-question">
   <label for="survey-question">Question:</label>
   <input type="text" name="question[text]" id="survey-question" value="<%= @question.text %>">
   <input type="hidden" name="question[survey_id]" id="survey-id" value="<%= @survey.id %>">

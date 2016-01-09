@@ -10,4 +10,16 @@ $(document).ready(function() {
       $('.container').append(response);
     });
   });
+
+  $('.container').on("submit", '#create-question', function(event){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/questions",
+      data: $(this).serialize()
+    }).done(function(response){
+      $('.container').append(response);
+    });
+  });
+
 });

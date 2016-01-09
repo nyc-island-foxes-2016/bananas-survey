@@ -17,11 +17,12 @@ end
 get '/choices/:id/new' do
   @question = Question.find_by(id: params[:id])
   @choice = Choice.new
-  erb :'/choices/new'
+  erb :'/choices/new', layout: false
 end
 
 post '/choices' do
   # binding.pry
+
   @choice = Choice.new(text: params[:choice][:text])
   @question = Question.find_by(id: params[:choice][:question_id])
   @choice.questions << @question
