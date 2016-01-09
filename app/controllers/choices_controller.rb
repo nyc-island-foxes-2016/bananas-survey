@@ -14,6 +14,7 @@ post '/choices' do
   if request.xhr?
     @choice = Choice.create(text: params[:choice][:text])
     @question = Question.find_by(id: params[:choice][:question_id])
+    binding.pry
     @choice.questions << @question
     redirect "/choices/#{@question.id}"
   else

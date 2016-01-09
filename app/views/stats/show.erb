@@ -1,0 +1,21 @@
+<h3><%= @survey.title %> Stats</h3>
+  <% if !@answers.empty? %>
+    <ul>
+
+      <% @survey.questions.each do |question| %>
+
+        <h4><%= question.text %></h4>
+
+        <% question.choices.each do |choice| %>
+
+        <p><%= choice.responses.count %> people chose <%= choice.text %></p>
+
+        <% end %>
+      <% end %>
+    <%else%>
+      <p>You have no stats yet!</p>
+    </ul>
+  <%end%>
+
+<a href="/users/<%= current_user.id %>" class="banana-button no_decoration">Return to Profile</a>
+
