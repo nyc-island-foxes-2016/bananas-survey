@@ -1,0 +1,14 @@
+<div id="container">
+  <h3>Choices</h3>
+  <ol>
+    <% @choices.each do |choice| %>
+      <li><%= choice.text %></li><br>
+    <% end %>
+  </ol>
+
+
+<a href="/choices/<%= @question.id %>/new" class="banana-button">Add Choice</a>
+
+<a href="/surveys/<%= @question.survey_id %>" class="banana-button">View Survey</a>
+
+</div>
