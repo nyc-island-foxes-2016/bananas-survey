@@ -1,4 +1,5 @@
 get '/surveys' do
+  # binding.pry
   @surveys = Survey.all
   erb :'surveys/index'
 end

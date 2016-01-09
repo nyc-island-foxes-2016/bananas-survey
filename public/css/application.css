@@ -80,7 +80,6 @@ form input {
   font:          normal 700 24px/1 "Bangers", sans-serif;
   text-align:    center;
   text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
-  text-decoration: none;
 }
 
 .no-border {
@@ -104,4 +103,8 @@ footer p{
   width: 100%;
   color: black;
   font-family: "Bangers";
+}
+
+.no_decoration{
+  text-decoration: none;
 }
