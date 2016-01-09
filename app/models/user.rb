@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Remember to create a migration!
   include BCrypt
   has_many :surveys
+  has_many :responses
 
   validates :name, presence: true, uniqueness: true, length: {maximum: 50}
   validates :password, presence: true
