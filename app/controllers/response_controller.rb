@@ -6,11 +6,11 @@ post '/response' do
   @survey = Survey.find_by(id: params[:response][:survey_id])
   @user = User.find_by(id: session[:user_id])
   @answer = Response.new(user: @user, survey: @survey, question: @question, choice: @choice)
-  if @answer.save
+  if !@survey.responses.find_by(user_id: @user.id) && @answer.save
     redirect "/surveys"
   else
-    @errors = @response.errors.full_messages
-    redirect "/surveys/#{@survey.id}"
+    @response_errors = ["You already took this survey! Get outta here!"]
+    erb :'/surveys/show'
   end
 
 end

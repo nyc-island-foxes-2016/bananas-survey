@@ -22,11 +22,18 @@
 </form>
 </div>
 
+ <% if @response_errors %>
+   <ul>
+     <% @response_errors.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+   </ul>
+ <% end  %>
+
 <% if @survey.user_id == session[:user_id] %>
   <form method="POST" action="/surveys/<%= @survey.id %>">
     <input type="hidden" name="_method" value="DELETE">
     <input  class="banana-button" type="submit" value="Delete Survey">
   </form>
 <% end %>
-<!--
-creating the form that uses the survey data anx -->
+
