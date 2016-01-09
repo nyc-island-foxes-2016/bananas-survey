@@ -23,25 +23,10 @@ end
 
 post '/surveys' do
   @survey = Survey.new(params[:survey])
-  @question = Question.new(params[:question])
-
   if @survey.save
-    @question.survey = @survey
-    if @question.save
-    (params[:choices]).each do |choice_text|
-      choice = Choice.create(text: choice_text)
-          QuestionChoice.create(question: @question, choice: choice)
-      end
-      redirect "/users/#{params[:survey][:user_id]}"
-    else
-      @survey.destroy
-      @question.destroy
-      @question_errors = @question.errors.full_messages
-      erb :'/surveys/new'
-    end
+    redirect "/questions/#{@survey.id}/new"
   else
-    @survey.destroy
-    @survey_errors = @survey.errors.full_messages
-    erb :'/surveys/new'
+    @errors = @survey.errors.full_messages
+    redirect "/surveys/new"
   end
 end
