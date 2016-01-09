@@ -4,37 +4,12 @@
   <label for="survey-title">Title:</label>
   <input type="text" name="survey[title]" id="survey-title" value="<%= @survey.title %>">
 
-  <label for="survey-question">Question:</label>
-  <input type="text" name="question[text]" id="survey-question" value="<%= @question.text %>">
-
-  <label for="question-choice-1">Choice:</label>
-  <input id="question-choice-1" name="choices[]" />
-
-  <label for="question-choice-2">Choice:</label>
-  <input id="question-choice-2" name="choices[]" />
-
-  <input class="banana-button" type="submit" value="Create survey">
+  <input class="banana-button" type="submit" value="Add title">
 </form>
 
- <% if @survey_errors %>
+ <% if @errors %>
    <ul>
-     <% @survey_errors.each do |message| %>
-       <li><%= message %></li>
-     <% end %>
-   </ul>
- <% end  %>
-
- <% if @question_errors %>
-   <ul>
-     <% @question_errors.each do |message| %>
-       <li><%= message %></li>
-     <% end %>
-   </ul>
- <% end  %>
-
- <% if @choice_errors %>
-   <ul>
-     <% @choice_errors.each do |message| %>
+     <% @errors.each do |message| %>
        <li><%= message %></li>
      <% end %>
    </ul>

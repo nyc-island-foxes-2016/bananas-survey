@@ -1,0 +1,14 @@
+<form action='/questions' method= "post">
+  <label for="survey-question">Question:</label>
+  <input type="text" name="question[text]" id="survey-question" value="<%= @question.text %>">
+  <input type="hidden" name="question[survey_id]" id="survey-id" value="<%= @survey.id %>">
+  <input class="banana-button" type="submit" value="Add Question">
+</form>
+
+ <% if @errors %>
+   <ul>
+     <% @errors.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+   </ul>
+ <% end  %>
