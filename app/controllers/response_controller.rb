@@ -13,3 +13,10 @@ post '/response' do
   end
 
 end
+
+get '/response/:id/stats' do
+  @survey = Survey.find_by(id: params[:id])
+  @answers = @survey.responses
+  erb :'/stats/show'
+end
+

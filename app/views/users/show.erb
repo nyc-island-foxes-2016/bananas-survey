@@ -1,5 +1,5 @@
 <h3><%= @user.name %> profile page</h3>
-  <% if @user.surveys %>
+  <% if !@user.surveys.empty? %>
     <ul>
       <% @user.surveys.each do |survey| %>
       <li class="inline"><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
@@ -8,6 +8,7 @@
               <input type="hidden" name="_method" value="DELETE" />
               <input class="banana-button" type="submit" value="Delete Survey">
             </form>
+            <a href="/response/<%= survey.id %>/stats" class="banana-button no_decoration" >Stats</a>
             <br>
           <% end %>
       <% end %>
