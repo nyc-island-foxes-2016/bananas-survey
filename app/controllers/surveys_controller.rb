@@ -1,4 +1,3 @@
-
 get '/surveys' do
   @surveys = Survey.all
   erb :'surveys/index'
@@ -22,27 +21,27 @@ delete '/surveys/:id' do
   redirect "users/#{session[:user_id]}"
 end
 
-
 post '/surveys' do
   @survey = Survey.new(params[:survey])
   @question = Question.new(params[:question])
 
-  # Iterates through choices entered and creates new Choices and QuestionChoices
-  (params[:choices]).each do |choice_text|
-      choice = Choice.create(text: choice_text)
-      QuestionChoice.create(question: @question, choice: choice )
-  end
-
   if @survey.save
-    redirect "/users/#{params[:survey][:user_id]}"
+    @question.survey = @survey
+    if @question.save
+    (params[:choices]).each do |choice_text|
+      choice = Choice.create(text: choice_text)
+          QuestionChoice.create(question: @question, choice: choice)
+      end
+      redirect "/users/#{params[:survey][:user_id]}"
+    else
+      @question_errors = @question.errors.full_messages
+      erb :'/surveys/new'
+    end
   else
-    @errors = @survey.errors.full_messages
+    @survey_errors = @survey.errors.full_messages
     erb :'/surveys/new'
   end
-
 end
-
-
 
 
 
